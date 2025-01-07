@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
-            $table->employee_id()->primary();
-            $table->foreign('dept_id')->references('dept_id')->on('departments');
+            $table->string('employee_id')->primary();
             $table->string('name');
+            $table->string('dept_id')->nullable(); // Temporarily nullable
             $table->timestamps();
         });
     }
@@ -24,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('employees');
     }
 };

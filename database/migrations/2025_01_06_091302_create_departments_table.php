@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Create departments table
         Schema::create('departments', function (Blueprint $table) {
-            $table->dept_id()->primary();
-            $table->foreign('head_id')->references('employee_id')->on('employee');
-            $table->integer('name');
+            $table->string('dept_id')->primary();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -24,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('departments');
     }
 };
