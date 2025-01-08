@@ -14,9 +14,10 @@ return new class extends Migration
         // Create users table
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('employee_id')->nullable(); // Temporarily nullable
+            $table->string('employee_id');
             $table->string('email')->unique();
             $table->string('password');
+            $table->enum('role', ['admin', 'employee']);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -9,13 +9,17 @@ class Employee extends Model
 {
     //
     use HasFactory;
-    protected $table = 'employee';
+    protected $table = 'employees';
     public $incrementing = false;
     protected $primary_key = '';
     protected $fillable = [
         'employee_id',
-        'head_id',
-        'name'
+        'name',
+        'dept_id'
     ];
 
+    public function department()
+    {
+        return $this->hasOne(Department::class, 'dept_id', 'dept_id');
+    }
 }
